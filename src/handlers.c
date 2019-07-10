@@ -127,7 +127,11 @@ zval * pthreads_read_property (PTHREADS_READ_PROPERTY_PASSTHRU_D) {
 	}
 	
 	return rv;
-} 
+} /* }}} */
+
+/* {{{ */
+zval *pthreads_get_property_ptr_ptr_stub(zval *object, zval *member, int type, void **cache_slot) { return NULL; }
+/* }}} */
 
 zval* pthreads_read_dimension(PTHREADS_READ_DIMENSION_PASSTHRU_D) { return pthreads_read_property(PTHREADS_READ_DIMENSION_PASSTHRU_C); }
 /* }}} */
