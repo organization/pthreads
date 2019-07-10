@@ -42,7 +42,7 @@ typedef struct _pthreads_ident_t {
 /* {{{ */
 typedef struct _pthreads_object_t {
 	pthread_t thread;
-	uint scope;
+	unsigned int scope;
 	zend_ulong options;
 	pthreads_monitor_t	*monitor;
 	union {
@@ -113,11 +113,11 @@ static inline pthreads_object_t* _pthreads_fetch_object(zend_object *object) {
 #define PTHREADS_IS_NOT_THREADED(t)     (!PTHREADS_IS_THREADED(t)) /* }}} */
 
 /* {{{ pthread_self wrapper */
-static inline ulong pthreads_self() {
+static inline zend_ulong pthreads_self() {
 #ifdef _WIN32
-	return (ulong) GetCurrentThreadId();
+	return (zend_ulong) GetCurrentThreadId();
 #else
-	return (ulong) pthread_self();
+	return (zend_ulong) pthread_self();
 #endif
 } /* }}} */
 
